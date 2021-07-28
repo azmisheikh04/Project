@@ -1,0 +1,109 @@
+Create Table Table_India 
+(
+Customer_Name varchar(255),
+Customer_Id varchar(18),
+Open_Date DateTime,
+Last_Consulted_Date DateTime,
+Vaccination_Id char(5),
+Dr_Name char(255),
+State  char(5),
+Country  char(5),
+DOB       Date,
+Is_Active   char(1)
+)
+
+Create Table Table_USA
+(
+Customer_Name varchar(255),
+Customer_Id varchar(18),
+Open_Date DateTime,
+Last_Consulted_Date DateTime,
+Vaccination_Id char(5),
+Dr_Name char(255),
+State  char(5),
+Country  char(5),
+DOB       Date,
+Is_Active   char(1)
+)
+
+Create Table_PHIL
+(
+Customer_Name varchar(255),
+Customer_Id varchar(18),
+Open_Date DateTime,
+Last_Consulted_Date DateTime,
+Vaccination_Id char(5),
+Dr_Name char(255),
+State  char(5),
+Country  char(5),
+DOB       Date,
+Is_Active   char(1)
+)
+
+Create Table Table_NYC 
+(
+Customer_Name varchar(255),
+Customer_Id varchar(18),
+Open_Date DateTime,
+Last_Consulted_Date DateTime,
+Vaccination_Id char(5),
+Dr_Name char(255),
+State  char(5),
+Country  char(5),
+DOB       Date,
+Is_Active   char(1)
+)
+
+
+Create Table Table_AU
+(
+Customer_Name varchar(255),
+Customer_Id varchar(18),
+Open_Date DateTime,
+Last_Consulted_Date DateTime,
+Vaccination_Id char(5),
+Dr_Name char(255),
+State  char(5),
+Country  char(5),
+DOB       Date,
+Is_Active   char(1)
+)
+
+Create Table #stgtable
+(
+Customer_Name varchar(255),
+Customer_Id varchar(18),
+Open_Date DateTime,
+Last_Consulted_Date DateTime,
+Vaccination_Id char(5),
+Dr_Name char(255),
+State  char(5),
+Country  char(5),
+DOB       Date,
+Is_Active   char(1)
+)
+
+
+Bulk Insert #stgtable
+from 'FilePath\FileName'
+WITH (FIELDTERMINATOR = '\t', ROWTERMINATOR = '\n')
+
+select * into Table_India 
+from #stgtable
+where Country = 'IND' 
+
+select * into Table_USA
+from #stgtable
+where Country = 'USA'
+
+select * into Table_PHIL
+from #stgtable
+where Country = 'PHIL'
+
+select * into Table_NYC 
+from #stgtable
+where Country = 'NYC'
+
+select * into Table_AU
+from #stgtable
+where Country = 'AU'
